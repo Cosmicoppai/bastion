@@ -1,0 +1,19 @@
+services:
+  bastion:
+    build:
+      dockerfile: bastion
+    ports:
+      - '6969:22'
+
+  server1:
+    build:
+      dockerfile: client
+#    ports:  # Disable to simulate jump via bastion
+#      - '22:22'
+
+
+  server2:
+    build:
+      dockerfile: client
+      #    ports:  # Disable to simulate jump via bastion
+      #      - '22:22'

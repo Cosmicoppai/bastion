@@ -1,0 +1,15 @@
+FROM ubuntu:25.04
+
+RUN apt update -y && apt install openssh-server -y && mkdir -p /root/.ssh/
+
+COPY ssh_config/client/config /etc/ssh/sshd_config
+
+COPY ssh_config/client/authorized_keys /root/.ssh/
+
+EXPOSE 22
+
+RUN chmod 700 /root/.ssh/ && \
+    chmod 600 /root/.ssh/authorized_keys && \
+    sshd -t -f /etc/ssh/sshd_config
+
+CMD ["/usr/sbin/sshd", "-D"]

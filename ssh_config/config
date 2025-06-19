@@ -1,0 +1,20 @@
+Host jump-host
+    HostName localhost
+    Port 6969
+    User root
+    IdentityFile ~/temp/test
+    IdentitiesOnly yes
+
+Host server1
+    HostName server1
+    User root
+    ProxyJump jump-host
+    IdentityFile ~/temp/test
+    IdentitiesOnly yes
+
+Host server2
+    HostName server2
+    User root
+    ProxyJump jump-host
+    IdentityFile ~/temp/test
+    IdentitiesOnly yes
